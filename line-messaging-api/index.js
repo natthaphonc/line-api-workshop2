@@ -57,7 +57,8 @@ async function handleEvent(event) {
 }
 
 async function handleText(message, event) {
-  return client.replyMessage(event.replyToken, { type: 'text', text: message.text });
+  if (message.text === 'foo')
+  return client.replyMessage(event.replyToken, { type: 'text', text: 'bar'});
 }
 
 function handleImage(message, event) {
