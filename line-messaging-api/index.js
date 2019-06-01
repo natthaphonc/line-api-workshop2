@@ -7,6 +7,8 @@ const client = new line.Client(config);
 
 async function handleEvent(event) {
   switch (event.type) {
+    case 'follow':
+      const message = event.message;
     case 'message':
       const message = event.message;
       switch (message.type) {
@@ -57,8 +59,7 @@ async function handleEvent(event) {
 }
 
 async function handleText(message, event) {
-  if (message.text === 'foo')
-  return client.replyMessage(event.replyToken, { type: 'text', text: 'bar'});
+  return client.replyMessage(event.replyToken, { type: 'text', text: message.text });
 }
 
 function handleImage(message, event) {
